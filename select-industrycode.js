@@ -4,7 +4,8 @@ import { IndustryCode } from "./IndustryCode.js";
 class SelectIndustryCode extends SelectTree {
   constructor() {
     super();
-    this.setAttribute("src", IndustryCode.fn);
+    const url = "https://code4fukui.github.io/IndustryCode/" + IndustryCode.fn;
+    this.setAttribute("src", url);
     super.init();
   }
   set value(v) {
