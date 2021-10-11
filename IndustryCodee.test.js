@@ -10,6 +10,7 @@ Deno.test("decode", async () => {
   t.assertEquals(await IndustryCode.decode(8163), "高等専門学校");
   t.assertEquals(await IndustryCode.decode("J"), "金融業，保険業");
   t.assertEquals(await IndustryCode.decode(3), "漁業（水産養殖業を除く）");
+  t.assertEquals(await IndustryCode.decode("3"), "漁業（水産養殖業を除く）");
   t.assertEquals(await IndustryCode.decode(3333), null);
 });
 Deno.test("find", async () => {
