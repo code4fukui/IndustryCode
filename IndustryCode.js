@@ -7,7 +7,8 @@ class IndustryCode {
     if (IndustryCode.csv) {
       return IndustryCode.csv;
     }
-    return IndustryCode.csv = await CSV.fetch(IndustryCode.fn);
+    const url = "https://code4fukui.github.io/IndustryCode/";
+    return IndustryCode.csv = await CSV.fetch(url + IndustryCode.fn);
   }
   static async find(s) {
     const csv = await IndustryCode.init();
