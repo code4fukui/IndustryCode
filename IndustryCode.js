@@ -35,6 +35,9 @@ class IndustryCode {
   static async decode(code) {
     const csv = await IndustryCode.init();
     const value = csv.find(line => line.find(l => l == code || parseInt(l) == parseInt(code)));
+    if (!value) {
+      return null;
+    }
     return value[value.length - 1];
   }
 }
