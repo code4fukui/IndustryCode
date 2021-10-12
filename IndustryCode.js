@@ -57,6 +57,9 @@ class IndustryCode {
     }
     return res;
   }
+  static async decodeAll(code) {
+    return this.decodeTree(code);
+  }
 }
 
 export { IndustryCode };
