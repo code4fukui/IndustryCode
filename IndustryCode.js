@@ -35,11 +35,24 @@ class IndustryCode {
   }
   static async decode(code) {
     const csv = await IndustryCode.init();
-    const value = csv.find(line => line.find(l => l == code || parseInt(l) == parseInt(code)));
+    const value = csv.find(line => line.find(l => l == code)); //  || parseInt(l) == parseInt(code)));
+    // || parseInt(l) == parseInt(code)));
+    console.log(code, value);
     if (!value) {
       return null;
     }
     return value[value.length - 1];
+  }
+  static async decodeAll(code) {
+    const res = [];
+    for (let i = 2; i < code.length; i++) {
+      const c = code.substring(0, i);
+      const dec = await IndustryCode.decode(c);
+      console.log(c, dec)
+      
+      res.push(dec);
+    }
+    return res;
   }
 }
 
