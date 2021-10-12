@@ -36,21 +36,24 @@ class IndustryCode {
   static async decode(code) {
     const csv = await IndustryCode.init();
     const value = csv.find(line => line.find(l => l == code)); //  || parseInt(l) == parseInt(code)));
-    // || parseInt(l) == parseInt(code)));
-    console.log(code, value);
     if (!value) {
       return null;
     }
     return value[value.length - 1];
   }
-  static async decodeAll(code) {
+  static async decodeTree(code) {
+    const csv = await IndustryCode.init();
+    const value = csv.find(line => line.find(l => l == code)); //  || parseInt(l) == parseInt(code)));
+    if (!value) {
+      return null;
+    }
     const res = [];
-    for (let i = 2; i < code.length; i++) {
-      const c = code.substring(0, i);
-      const dec = await IndustryCode.decode(c);
-      console.log(c, dec)
-      
-      res.push(dec);
+    for (let i = 0; i < 4; i++) {
+      const v = value[i];
+      if (i > 0 && parseInt(v) == 0) {
+        break;
+      }
+      res.push(await this.decode(v));
     }
     return res;
   }
