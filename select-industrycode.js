@@ -27,6 +27,9 @@ class SelectIndustryCode extends SelectTree {
   }
   get value() {
     const s = super.value;
+    if (!s || typeof s != "string") {
+      return s;
+    }
     const n = s.indexOf(" ");
     if (n < 0) {
       return s;
