@@ -26,7 +26,12 @@ class SelectIndustryCode extends SelectTree {
     super.value = v;
   }
   get value() {
-    return super.value;
+    const s = super.value;
+    const n = s.indexOf(" ");
+    if (n < 0) {
+      return s;
+    }
+    return s.substring(0, n);
   }
 }
 
