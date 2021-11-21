@@ -1,14 +1,17 @@
 import { CSV } from "https://js.sabae.cc/CSV.js";
 
 class IndustryCode {
+  static url = "https://code4fukui.github.io/IndustryCode/"; // default
+  static setDataPath(url) {
+    this.url = url;
+  }
   static fn = "000420038.csv";
   static csv = null;
   static async init() {
     if (IndustryCode.csv) {
       return IndustryCode.csv;
     }
-    const url = "https://code4fukui.github.io/IndustryCode/";
-    return IndustryCode.csv = await CSV.fetch(url + IndustryCode.fn);
+    return IndustryCode.csv = await CSV.fetch(this.url + IndustryCode.fn);
   }
   static async find(s) {
     const csv = await IndustryCode.init();
