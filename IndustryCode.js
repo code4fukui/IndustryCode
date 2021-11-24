@@ -63,6 +63,26 @@ class IndustryCode {
   static async decodeAll(code) {
     return this.decodeTree(code);
   }
+  static async getCodeChildlen(code) {
+    const csv = await IndustryCode.init();
+    if (!code) {
+      return null;
+    }
+    if (code.length >= 4) {
+      return null;
+    }
+    const n = code.length;
+    const res = [];
+    for (let i = 1; i < csv.length; i++) {
+      if (csv[i][n - 1] == code) {
+        const s = csv[i][n];
+        if (parseInt(s) > 0 && res.indexOf(s) == -1) {
+          res.push(s);
+        }
+      }
+    }
+    return res;
+  }
 }
 
 export { IndustryCode };
