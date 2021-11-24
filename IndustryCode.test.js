@@ -28,7 +28,7 @@ Deno.test("decodeTree", async () => {
   t.assertEquals(await IndustryCode.decodeTree("03"), ["漁業", "漁業（水産養殖業を除く）"]);
 });
 Deno.test("decodeChild", async () => {
-  t.assertEquals(await IndustryCode.getCodeChildlen("A"), ["01", "02"]);
-  t.assertEquals(await IndustryCode.getCodeChildlen("M"), ["75", "76", "77"]);
-  t.assertEquals(await IndustryCode.getCodeChildlen("01"), ["010", "011", "012", "013", "014"]);
+  t.assertEquals(await IndustryCode.getChildCodes("A"), ["01", "02"]);
+  t.assertEquals(await IndustryCode.getChildCodes("M"), ["75", "76", "77"]);
+  t.assertEquals(await IndustryCode.getChildCodes("01"), ["010", "011", "012", "013", "014"]);
 });

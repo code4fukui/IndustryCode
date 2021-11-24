@@ -63,7 +63,7 @@ class IndustryCode {
   static async decodeAll(code) {
     return this.decodeTree(code);
   }
-  static async getCodeChildlen(code) {
+  static async getChildCodes(code) {
     const csv = await IndustryCode.init();
     if (!code) {
       return null;
