@@ -37,3 +37,9 @@ Deno.test("encodeTree", async () => {
   t.assertEquals(await IndustryCode.encodeTree("情報サービス業"), ["G", "39"]);
   t.assertEquals(await IndustryCode.encodeTree("高等専門学校"), ["O", "81", "816", "8163"]);
 });
+Deno.test("encode without blacket", async () => {
+  t.assertEquals(await IndustryCode.encode("専門サービス業"), "72");
+  t.assertEquals(await IndustryCode.decodeTree("72"), ["学術研究，専門・技術サービス業", "専門サービス業（他に分類されないもの）"]);
+  t.assertEquals(await IndustryCode.encode("プラスチック製品製造業"), "18");
+  t.assertEquals(await IndustryCode.decodeTree("18"), ["製造業", "プラスチック製品製造業（別掲を除く）"]);
+});

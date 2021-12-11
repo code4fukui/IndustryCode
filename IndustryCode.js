@@ -29,10 +29,23 @@ class IndustryCode {
     return null;
   }
   static async encode(s) {
-    const csv = await IndustryCode.init();
-    const value = csv.find(line => line[line.length - 1] == s);
-    if (!value) {
+    if (s == null || s.length == 0) {
       return null;
+    }
+    const csv = await IndustryCode.init();
+    let value = csv.find(line => line[line.length - 1] == s);
+    if (!value) {
+      const cutBlacket = (s) => {
+        const n = s.indexOf("（");
+        if (n < 0) {
+          return null;
+        }
+        return s.substring(0, n);
+      };
+      value = csv.find(line => cutBlacket(line[line.length - 1]) == s);
+      if (!value) {
+        return null;
+      }
     }
     return IndustryCode.getCodeByRecord(value);
   }
