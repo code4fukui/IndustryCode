@@ -36,6 +36,15 @@ class IndustryCode {
     }
     return IndustryCode.getCodeByRecord(value);
   }
+  static async encodeTree(s) {
+    const code = await IndustryCode.encode(s);
+    const names = await IndustryCode.decodeTree(code);
+    const res = [];
+    for (const r of names) {
+      res.push(await IndustryCode.encode(r));
+    }
+    return res;
+  }
   static async decode(code) {
     const csv = await IndustryCode.init();
     const value = csv.find(line => line.find(l => l == code)); //  || parseInt(l) == parseInt(code)));

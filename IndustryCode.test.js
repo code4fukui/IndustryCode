@@ -32,3 +32,8 @@ Deno.test("decodeChild", async () => {
   t.assertEquals(await IndustryCode.getChildCodes("M"), ["75", "76", "77"]);
   t.assertEquals(await IndustryCode.getChildCodes("01"), ["010", "011", "012", "013", "014"]);
 });
+Deno.test("encodeTree", async () => {
+  t.assertEquals(await IndustryCode.decodeTree(39), ["情報通信業", "情報サービス業"]);
+  t.assertEquals(await IndustryCode.encodeTree("情報サービス業"), ["G", "39"]);
+  t.assertEquals(await IndustryCode.encodeTree("高等専門学校"), ["O", "81", "816", "8163"]);
+});
