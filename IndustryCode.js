@@ -1,5 +1,14 @@
 import { CSV } from "https://js.sabae.cc/CSV.js";
 
+const compareByIndustryCode = (a, b) => {
+  const na = a.length;
+  const nb = b.length;
+  if (na != nb) {
+    return na - nb;
+  }
+  return a.localeCompare(b);
+};
+
 class IndustryCode {
   static url = "https://code4fukui.github.io/IndustryCode/"; // default
   static setDataPath(url) {
@@ -104,6 +113,9 @@ class IndustryCode {
       }
     }
     return res;
+  }
+  static sortByCode(ar) {
+    return ar.sort(compareByIndustryCode);
   }
 }
 

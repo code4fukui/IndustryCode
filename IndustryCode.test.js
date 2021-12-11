@@ -43,3 +43,6 @@ Deno.test("encode without blacket", async () => {
   t.assertEquals(await IndustryCode.encode("プラスチック製品製造業"), "18");
   t.assertEquals(await IndustryCode.decodeTree("18"), ["製造業", "プラスチック製品製造業（別掲を除く）"]);
 });
+Deno.test("sort by industrycode", async () => {
+  t.assertEquals(IndustryCode.sortByCode(["30", "E", "R", "013", "8163"]), ["E", "R", "30", "013", "8163"]);
+});
