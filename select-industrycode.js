@@ -3,8 +3,8 @@ import { IndustryCode } from "./IndustryCode.js";
 import { CSV } from "https://js.sabae.cc/CSV.js";
 
 class SelectIndustryCode extends SelectTree {
-  constructor() {
-    super();
+  constructor(opts) {
+    super(null, opts);
     super.init();
   }
   async init() {
