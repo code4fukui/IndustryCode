@@ -5,6 +5,7 @@ import { CSV } from "https://js.sabae.cc/CSV.js";
 class SelectIndustryCode extends SelectTree {
   constructor(opts) {
     super(null, opts);
+    this.opts.showLabel = true;
     super.init();
   }
   async init() {
