@@ -6,7 +6,7 @@
 ## 使い方
 
 ```js
-import { IndustryCode } from "https://code4fukui.github.io/IndustryCode/IndustryCod.js";
+import { IndustryCode } from "https://github.com/code4fukui/IndustryCode";
 
 console.log(await IndustryCode.encode("高等専門学校"));
 console.log(await IndustryCode.decode("8163"));
